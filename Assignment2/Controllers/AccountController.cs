@@ -13,22 +13,27 @@ namespace Assignment2.Controllers
         // GET: Account
         public ActionResult Index()
         {
-            return View();
+            return View(vl.Activities);
         }
+
 
         [HttpGet]
         public ActionResult Login()
         {
-            return View();
+            return View(vl.Activities);
         }
 
         [HttpPost]
-        public ActionResult Login(User user)
+        public ActionResult Login(Activity activity)
         {
+            activity.IpAddress = Request.UserHostAddress;
+            vl.Activities.Add(activity);
+            vl.SaveChanges();
             // need to verify if session username and password match the database
+            //if(Session["password"]==user.Password && Session["UserName"]==user.UserName)
 
             //if yes then redirect to the Home View Index View
-            return RedirectToAction("Home", "Index");
+            return RedirectToAction("Home");
 
             //if not successful then display error Redirect to Action Create
 

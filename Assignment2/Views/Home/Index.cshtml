@@ -1,5 +1,29 @@
-﻿@{
+﻿@model IEnumerable<Assignment2.Models.Activity>
+@{
     ViewBag.Title = "Home Page";
+    Layout = "HTML Form";
 }
 
 <div><h1>Visitor Log</h1></div>
+<h2>Other users with active sessions in this application</h2>
+
+<table class="table">
+    <tr>
+     <th>@Html.DisplayNameFor(model=>model.ActivityName)</th>
+     <th>@Html.DisplayNameFor(model => model.IpAddress)</th>
+     <th>@Html.DisplayNameFor(model => model.ActivityDate)</th>
+</tr>
+    @foreach(var item in Model)
+    {<tr>
+       <td>@Html.DisplayFor(model=>item.ActivityName)</td>
+    </tr>
+    <tr>
+       <td>@Html.DisplayFor(model => item.IpAddress)</td>
+    </tr>
+    <tr>
+       <td>@Html.DisplayFor(model => item.ActivityDate)</td>
+    </tr>
+
+     }
+
+</table>
