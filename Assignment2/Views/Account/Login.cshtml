@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>PlesaeLogin</h2>
+@{ Html.BeginForm("Login", "Account", FormMethod.Post);
+    {
+        <div>
+            @Html.Label("UserName")
+        @Html.TextBox("UserName", null, new { @class = "textbox", placeholder = "UserName" })
+    </div>
+    <div>
+        @Html.Label("Password")
+    @Html.TextBox("Password", null, new { @class = "textbox", placeholder = "Password" })
+     </div>
+     <div>
+         <input type="button" value="submit" class="btn btn-default"/>
+         </div>
+}
+}
+
