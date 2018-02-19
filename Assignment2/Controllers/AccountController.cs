@@ -20,7 +20,7 @@ namespace Assignment2.Controllers
         [HttpGet]
         public ActionResult Login()
         {
-            return View(vl.Activities);
+            return View();
         }
 
         [HttpPost]
@@ -29,11 +29,11 @@ namespace Assignment2.Controllers
             activity.IpAddress = Request.UserHostAddress;
             vl.Activities.Add(activity);
             vl.SaveChanges();
-            // need to verify if session username and password match the database
-            //if(Session["password"]==user.Password && Session["UserName"]==user.UserName)
+            //need to verify if session username and password match the database
+            //if (Session["password"] == activity. && Session["UserName"] == user.UserName)
 
-            //if yes then redirect to the Home View Index View
-            return RedirectToAction("Home");
+                //if yes then redirect to the Home View Index View
+            return RedirectToAction("Home","Index");
 
             //if not successful then display error Redirect to Action Create
 

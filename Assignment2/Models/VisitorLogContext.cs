@@ -10,7 +10,7 @@ namespace Assignment2.Models
         //  By default, this connection string targets the 
         // 'Assignment2.Models.VisitorLog' database on your LocalDb instance. 
 
-        public VisitorLogContext(): base("name=MyVisitorLog")
+        public VisitorLogContext(): base("name=VisitorLog")
         {
         }
 
