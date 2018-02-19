@@ -22,27 +22,59 @@ namespace Assignment2.Controllers
         {
             return View();
         }
-
+        
         [HttpPost]
-        public ActionResult Login(Activity activity)
+        public ActionResult Login(User user)
+        {   
+
+            int id = Convert.ToInt32(Session["UserId"]);
+            User currentuser = vl.Users.Single(u => u.UserID == id);
+           
+            vl.Users.Add(user);
+            
+            if (currentuser.Password == user.Password)
+            {
+                return View();
+            } else
+            return View();
+        }
+
+        //[HttpPost]
+        //public ActionResult Login(Activity activity)
+        //{
+        //    activity.IpAddress = Request.UserHostAddress;
+        //    vl.Activities.Add(activity);
+        //    vl.SaveChanges();
+        //    //need to verify if session username and password match the database
+        //    //if (Session["password"] == activity. && Session["UserName"] == user.UserName)
+
+        //        //if yes then redirect to the Home View Index View
+        //    return RedirectToAction("Home","Index");
+
+        //    //if not successful then display error Redirect to Action Create
+
+        //}
+
+       [HttpGet]
+       public ActionResult Create()
         {
-            activity.IpAddress = Request.UserHostAddress;
-            vl.Activities.Add(activity);
-            vl.SaveChanges();
-            //need to verify if session username and password match the database
-            //if (Session["password"] == activity. && Session["UserName"] == user.UserName)
-
-                //if yes then redirect to the Home View Index View
-            return RedirectToAction("Home","Index");
-
-            //if not successful then display error Redirect to Action Create
-
+            return View();
         }
 
         [HttpPost]
         public ActionResult Create(User user)
         {
+            return RedirectToAction("PasswordGenerator");
+        }
+        [HttpGet]
+        public ActionResult PasswordGenerator()
+        {
             return View();
+        }
+        [HttpPost]
+        public ActionResult PasswordGenerator(User user)
+        {
+            return RedirectToAction("Login");
         }
 
 

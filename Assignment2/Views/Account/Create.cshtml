@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>New Account Information</h2>
+@{Html.BeginForm("Create", "Account", FormMethod.Post);
+        <div>
+            @Html.Label("FirstName")
+            @Html.TextBox("FirstName", null, new { @class = "textbox", placeholder = "FirstName" })
+        </div>
+        <div>
+            @Html.Label("LastName")
+            @Html.TextBox("LastName", null, new { @class = "textbox", placeholder = "LastName" })
+        </div>
+        <div>
+            @Html.Label("EmailAddress")
+            @Html.TextBox("EmailAddrss", null, new { @class = "textbox", placeholder = "EmailAddress" })
+        </div>
+        @*<div>
+            @Html.Label("ProgramOptions")
+            @Html.DropDownList("ProgramOptions",new SelectList(Enum.GetValues(typeof())),"Select ProgramName",new { @class="form control"})
+            })
+        </div>*@
+        <div>
+            <input type="submit" value="CreateAccount" class="btn btn-default" />
+        </div>
+        Html.EndForm();
+
+
+}
+
