@@ -28,9 +28,7 @@ namespace Assignment2.Models
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
         [Display(Name = "User Name")]
-        public string UserName {
-            get; set; //need to add in code to concat first name and last name
-        }
+ 
         public bool EmailUpdates { get; set; }
 
         public int ProgramID { get; set; }
