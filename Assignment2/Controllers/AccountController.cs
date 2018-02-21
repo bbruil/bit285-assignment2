@@ -25,25 +25,31 @@ namespace Assignment2.Controllers
 
         [HttpPost]
         public ActionResult Login(User user)
-        {
-           
+        {   
+            //find current user by id
+            
+            //int id = Convert.ToInt32(user.UserID);
+            //var currentuser = vl.Users.Single(u => u.UserID == id);
 
             // search users by password
             var userpasswords = vl.Users.Where(u => u.Password == user.Password);
 
-            if (userpasswords!=null)
-            {
+            if (user.Password!=null)
+            {   
+                //create a new activity in the log
                 Activity activity = new Activity();
                 activity.ActivityName = "LoggedIn";
                 activity.ActivityDate = DateTime.Now;
                 activity.IpAddress = Request.UserHostAddress;
+                //update the database
                 vl.Activities.Add(activity);
                 vl.SaveChanges();
+                //show the visitor log
                 return RedirectToAction("Index", "Home");
             }
 
-            else
-                return View("Login");
+            else 
+                return View();
         }
 
         [HttpGet]
