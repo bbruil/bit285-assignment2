@@ -23,38 +23,27 @@ namespace Assignment2.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //public ActionResult Login(User user)
-        //{   
-
-        //    int id = Convert.ToInt32(Session["UserId"]);
-        //    User currentuser = vl.Users.Single(u => u.UserID == id);
-
-        //    vl.Users.Add(user);
-
-        //    if (currentuser.Password == user.Password)
-        //    {
-        //        return View();
-        //    } else
-        //    return View();
-        //}
-
         [HttpPost]
-        public ActionResult Login(Activity activity)
+        public ActionResult Login(User user)
         {
-            
-            activity.IpAddress = Request.UserHostAddress;
-            activity.ActivityDate = DateTime.Now;
-            vl.Activities.Add(activity);
-            vl.SaveChanges();
-            //need to verify if session username and password match the database
-            //if (Session["password"] == activity. && Session["UserName"] == user.UserName)
+           
 
-            //if yes then redirect to the Home View Index View
-            return RedirectToAction("Index", "Home");
+            // search users by password
+            var userpasswords = vl.Users.Where(u => u.Password == user.Password);
 
-            //if not successful then display error Redirect to Action Create
+            if (userpasswords!=null)
+            {
+                Activity activity = new Activity();
+                activity.ActivityName = "LoggedIn";
+                activity.ActivityDate = DateTime.Now;
+                activity.IpAddress = Request.UserHostAddress;
+                vl.Activities.Add(activity);
+                vl.SaveChanges();
+                return RedirectToAction("Index", "Home");
+            }
 
+            else
+                return View("Login");
         }
 
         [HttpGet]
@@ -76,11 +65,7 @@ namespace Assignment2.Controllers
             return View();
         }
 
-        [HttpPost]
-        public ActionResult PasswordGenerator()
-        {   
-            return RedirectToAction("Login");
-        }
+ 
 
 
  /**

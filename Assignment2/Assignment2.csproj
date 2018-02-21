@@ -131,6 +131,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201802210213451_InitialCreate.cs" />
+    <Compile Include="Migrations\201802210213451_InitialCreate.Designer.cs">
+      <DependentUpon>201802210213451_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802210247522_adding users and programs.cs" />
+    <Compile Include="Migrations\201802210247522_adding users and programs.Designer.cs">
+      <DependentUpon>201802210247522_adding users and programs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Activity.cs" />
     <Compile Include="Models\Program.cs" />
     <Compile Include="Models\User.cs" />
@@ -240,6 +249,14 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201802210213451_InitialCreate.resx">
+      <DependentUpon>201802210213451_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802210247522_adding users and programs.resx">
+      <DependentUpon>201802210247522_adding users and programs.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
